@@ -1,0 +1,4 @@
+1562998485984	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.7mlm3Jt1WLFv"
+JavaScript error: jar:file:///usr/lib/firefox/omni.ja!/components/addonsInfo.js, line 91: SyntaxError: "0"-prefixed octal literals and octal escape sequences are deprecated; for octal literals use the "0o" prefix instead
+1562998507820	Marionette	INFO	Listening on port 35885
+1562998508335	Marionette	WARN	TLS certificate errors will be ignored for this session
