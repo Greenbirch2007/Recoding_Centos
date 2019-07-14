@@ -1,0 +1,136 @@
+socket套接字详解（TCP与UDP）
+
+https://blog.csdn.net/m0_37925202/article/details/80286946
+
+IP地址，端口号
+socket API
+实现UDP客户端、服务器
+
+
+套接字是网络编程中的一种通信机制，是支持TCP/IP的网络
+通信的基本操作单元，可以看做是不同主机之间的进程进行双向
+通信的端点，是通信的两方的一种约定，用套接字中的相关
+函数来完成通信过程。
+
+
+
+本地的进程间通信(IPC)有多种方式，常见的总结：
+１．管道(包括无名管道和命名管道)
+２．消息队列
+３．信号量
+４．共享存储
+５．...(socket和streams支持不同主机上的两个进程IPC)
+
+初识IP
+IP就是Internet协议IP
+
+在通信时，IP有源IP和目的IP之分，
+
+对比寄快递：网络通信相当于收发快递，IP就是收件/发件人地址，仅仅知道地址还不行，还要知道派送人是谁？这就对比于网络中的端口号概念，端口号标识了一个进程，告诉操作系统，当前这个数据交给哪一个程序进行解析。
+
+端口号：
+端口号(port)是传输层协议的内容
+
+端口号是一个２字节１６位的整数；
+端口号用来标识一个进程，告诉操作系统，当前这个数据交给
+哪一个程序进行解析；
+IP地址+端口号能标识网络上的某一台主机的某一进程；
+一个端口号只能被一个进程占用
+
+端口号 & 进程：
+概念
+进程有唯一的pid标识，端口号也能标识进程；
+
+一个进程可以绑定多个端口号，一个端口号不能被多个进程绑定。
+
+源端口号 & 目的端口号
+传输层协议（TCP/IP）的数据段中有两个端口号，分别叫做源端口号和目的端口号，就是在描述“数据是谁的？发给谁？”
+
+TCP:传输控制协议，面向连接。是一种提供可靠数据传输的通用协议
+传输层协议
+有连接
+可靠传输
+面向字节流
+
+UDP:用户数据报协议，是一个面向无连接的协议。采用该协议不需要
+两个应用程序先建立连接。UDP协议不提供差错恢复，不能提供
+数据重传，因此该协议传输数据安全性差
+
+传输层协议
+无连接
+不可靠传输
+面向数据报
+
+网络字节序：
+
+如何定义网络数据流的地址？
+
+１．发送机按内存地址从低到高顺序发送；
+２．接收主机按内存地址从低到高顺序保存；
+３．TCP/IP规定：网络数据流应采用大端字节序，即地地址高字节；
+４．不论主机是大端机还是小端机，都必须遵循TCP/IP规定
+５．如果发送机是小端，就先将数据转成大端再发送
+
+socket API
+
+// 创建socket文件描述符(TCP/UDP,客户端＋服务器)
+
+int socket(int domain,int type,int protocol)
+
+
+参数1(domain): 选择创建的套接字所用的协议族； 
+AF_INET ： IPv4协议； 
+AF_INET6： IPv6协议； 
+AF_LOCAL: Unix域协议； 
+AF_ROUTE：路由套接口； 
+AF_KEY ：密钥套接口。 
+参数2(type)：指定套接口类型，所选类型有： 
+SOCK_STREAM：字节流套接字； 
+SOCK_DGRAM : 数据报套接字; 
+SOCK_RAW : 原始套接口。 
+procotol: 使用的特定协议，一般使用默认协议（NULL）。
+
+
+//绑定端口号  （TCP/IP，服务器）
+
+int bind(int socket, const struct sockaddr *address, socklen_t address_len);
+
+参数1(socket) : 是由socket()调用返回的并且未作连接的套接字描述符（套接字号）。 
+参数2(address)：指向特定协议的地址指针。 
+参数3(address_len)：上面地址结构的长度。 
+返回值：没有错误，bind()返回0，否则SOCKET_ERROR。
+
+
+//开始监听socket  (TCP,服务器）
+
+int listen(int socket, int backlog);
+
+参数1(sockfd)：是由socket()调用返回的并且未作连接的套接字描述符（套接字号）。 
+参数2(backlog)：所监听的端口队列大小。
+
+
+//接受请求  （TCP，服务器）
+
+int accept(int socket, struct sockaddr* address, socklen_t* address_len);
+
+参数1(socket) : 是由socket()调用返回的并且未作连接的套接字描述符（套接字号）。 
+参数2(address)：指向特定协议的地址指针。 
+参数3(addrlen)：上面地址结构的长度。 
+返回值：没有错误，bind()返回0，否则SOCKET_ERROR。
+
+//建立连接  （TCP，客户端）
+
+int connect(int sockfd, const struct struct sockaddr *addr, aocklen_t addrlen);
+
+//关闭套接字
+int close(int fd);
+
+
+参数(fd)：是由socket()调用返回的并且未作连接的套接字描述符（套接字号）。
+
+socket API是一层抽象的网络编程接口，适用于各种底层网络协议，如IPv4，IPv6，……
+
+简单的TCP网络程序
+
+TCP客户－服务器程序执行流程
+
