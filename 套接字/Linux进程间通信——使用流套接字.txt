@@ -119,4 +119,8 @@ socket的接口函数什么在头文件sys/types.h和　sys/socket.h中
 
 int socket(int domain,int type,int protocol);
 
+
 函数中的三个参数分别对应前面
+
+
+https://www.jb51.net/article/112388.htm

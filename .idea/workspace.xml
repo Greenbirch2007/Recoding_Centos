@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f4ec265-7062-4555-b25d-e5d987a3d9f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/套接字/Linux进程间通信——使用流套接字.txt" beforeDir="false" afterPath="$PROJECT_DIR$/套接字/Linux进程间通信——使用流套接字.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/脚本之家的linux_shell/ScriptHome_linuxShell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="73" selection-start-line="73" selection-end-line="75" />
+            <state relative-caret-position="340">
+              <caret line="20" column="36" lean-forward="true" selection-end-line="84" selection-end-column="36" />
               <folding>
                 <element signature="e#36#45#0" expanded="true" />
               </folding>
@@ -45,8 +45,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="173" />
-    <option name="y" value="163" />
+    <option name="x" value="131" />
+    <option name="y" value="197" />
     <option name="width" value="1047" />
     <option name="height" value="513" />
   </component>
@@ -55,6 +55,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -91,12 +92,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Daily_CPlusProjects" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -197,7 +197,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="718" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19033457" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -246,8 +245,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/脚本之家的linux_shell/ScriptHome_linuxShell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="73" selection-start-line="73" selection-end-line="75" />
+        <state relative-caret-position="340">
+          <caret line="20" column="36" lean-forward="true" selection-end-line="84" selection-end-column="36" />
           <folding>
             <element signature="e#36#45#0" expanded="true" />
           </folding>

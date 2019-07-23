@@ -1,0 +1,38 @@
+Debian:命令行连接下wifi配置 (2018-01-03 15:42:28)转载▼
+
+http://blog.sina.com.cn//s/blog_a6559d920102xsui.html
+
+1、搜索附近的无线网络，获取要连接网络的 SSID
+root@linaro-alip:/# iwlist scan
+
+2、配置无线网络
+把下面文件中的 ssid 和 passwd 换成无线网络的 ssid 和密码。
+
+root@linaro-alip:/# vim /etc/network/interfaces
+
+打开这个文件，把其中倒数第2行的 ssid 替换成你要用的无线网络名称，password 替换成该无线网络的密码
+
+auto wlan0
+iface wlan0 inet dhcp
+pre-up ip link set wlan0 up
+pre-up iwconfig wlan0 essid ssid
+wpa-ssid ssid
+wpa-psk password
+
+举个例子，我的无线网络名称叫 Caesar-AP，密码是 test0000，那我的配置文件应该写成：
+
+iface wlan0 inet dhcp
+pre-up ip link set wlan0 up
+pre-up iwconfig wlan0 essid ssid
+wpa-ssid Caesar-AP
+wpa-psk test0000
+
+3、启用无线网线，执行系列命令，无线网卡会按照我们配置文件里面的信息自动连接该无线网络，并且每次重启电脑后仍然可以自动连接。
+
+root@linaro-alip:/# ifup wlan0
+
+
+
+
+
+重启后每次也可以自动链接上.
